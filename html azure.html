@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronos Lux - Relógios de Luxo</title>
+    <link rel="style.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+
+        /* Header */
+        header {
+            background-color: #111;
+            color: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        .logo span {
+            color: #d4af37;
+        }
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .header-icons a {
+            color: #fff;
+            margin-left: 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+
+        .header-icons a:hover {
+            color: #d4af37;
+        }
+
+
+        .cart-count {
+            background-color: #d4af37;
+            color: #111;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+
+        .btn {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #111;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+
+        .btn:hover {
+            background-color: #c9a227;
+            transform: translateY(-2px);
+        }
+
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #d4af37;
+            color: #fff;
+            margin-left: 15px;
+        }
+
+
+        .btn-outline:hover {
+            background-color: #d4af37;
+            color: #111;
+        }
+
+
+        /* Featured Section */
+        .featured {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #d4af37;
+            color: #111;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+
+        .product-info {
+            padding: 20px;
+        }
+
+
+        .product-category {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+        }
+
+
+        .old-price {
+            font-size: 16px;
+            color: #777;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .add-to-cart {
+            flex: 1;
+            background-color: #111;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+
+        .add-to-cart:hover {
+            background-color: #d4af37;
+        }
+
+
+        .wishlist {
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+
+        .wishlist:hover {
+            background-color: #e0e0e0;
+        }
+
+
+        /* Brands Section */
+        .brands {
+            padding: 60px 0;
+            background-color: #f5f5f5;
+        }
+
+
+        .brands-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+
+        .brand-item {
+            margin: 15px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+
+        .brand-item:hover {
+            opacity: 1;
+        }
+
+
+        .brand-item img {
+            height: 40px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+
+        .brand-item:hover img {
+            filter: grayscale(0%);
+        }
+
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+
+        .about-img {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        .about-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+
+        .about-features {
+            margin-top: 30px;
+        }
+
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+
+        .feature-icon {
+            font-size: 24px;
+            color: #d4af37;
+            margin-right: 15px;
+        }
+
+
+        .feature-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #111;
+        }
+
+
+        .feature-text p {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+
+        .testimonial-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .testimonial-author h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+
+        .testimonial-author p {
+            color: #777;
+            font-size: 14px;
+        }
+
+
+        .testimonial-rating {
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+        }
+
+
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 0;
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+
+        .newsletter h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #aaa;
+        }
+
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+
+        .newsletter-form button {
+            background-color: #d4af37;
+            color: #111;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+
+        .newsletter-form button:hover {
+            background-color: #c9a227;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #fff;
+            padding: 60px 0 0;
+        }
+
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #d4af37;
+        }
+
+
+        .footer-col p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #222;
+            color: #fff;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+
+
+        .social-links a:hover {
+            background-color: #d4af37;
+            color: #111;
+            transform: translateY(-3px);
+        }
+
+
+        .footer-bottom {
+            background-color: #000;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+
+        .footer-bottom p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+
+            .about-img {
+                order: -1;
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+
+            nav ul li {
+                margin: 0 15px 10px;
+            }
+
+
+            .header-icons {
+                margin-top: 20px;
+            }
+
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+
+            .hero p {
+                font-size: 18px;
+            }
+
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+
+
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 15px;
+            }
+        }
+
+
+        @media (max-width: 576px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+
+            .wishlist {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Chronos<span>Lux</span></a>
+           
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Relógios</a></li>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+           
+            <div class="header-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+                <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Relógios de Luxo Exclusivos</h1>
+            <p>Descubra nossa coleção premium de relógios que combinam precisão suíça com design elegante.</p>
+            <a href="#" class="btn">Compre Agora</a>
+            <a href="#" class="btn btn-outline">Explorar Coleção</a>
+        </div>
+    </section>
+
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <div class="section-title">
+                <h2>Destaques</h2>
+                <p>Nossos relógios mais populares e exclusivos, selecionados para você</p>
+            </div>
+           
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Relógio de Luxo">
+                        <span class="product-badge">Novo</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Relógio Masculino</span>
+                        <h3 class="product-title">Chronos Master Automatic</h3>
+                        <div class="product-price">
+                            <span class="current-price">R$ 8.999</span>
+                            <span class="old-price">R$ 10.499</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Adicionar ao Carrinho</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Relógio de Luxo">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Relógio Feminino</span>
+                        <h3 class="product-title">Elegance Diamond</h3>
+                        <div class="product-price">
+                            <span class="current-price">R$ 12.499</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Adicionar ao Carrinho</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Relógio de Luxo">
+                        <span class="product-badge">Oferta</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Relógio Masculino</span>
+                        <h3 class="product-title">Heritage Chronograph</h3>
+                        <div class="product-price">
+                            <span class="current-price">R$ 6.799</span>
+                            <span class="old-price">R$ 8.299</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Adicionar ao Carrinho</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1557531365-e8b22d93dbd0?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Relógio de Luxo">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Relógio Unissex</span>
+                        <h3 class="product-title">Minimalist Classic</h3>
+                        <div class="product-price">
+                            <span class="current-price">R$ 4.299</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="add-to-cart">Adicionar ao Carrinho</button>
+                            <button class="wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <div class="section-title">
+                <h2>Marcas Parceiras</h2>
+                <p>Trabalhamos apenas com as melhores marcas de relógios do mundo</p>
+            </div>
+           
+            <div class="brands-container">
+                <div class="brand-item">
+                    <img src="https://logodownload.org/wp-content/uploads/2017/05/rolex-logo-1.png" alt="Rolex">
+                </div>
+                <div class="brand-item">
+                    <img src="https://i.pinimg.com/736x/7f/49/12/7f4912bf2548cb3d2f20183a8a9886d2.jpg" alt="Omega">
+                </div>
+                <div class="brand-item">
+                    <img src="https://s3-sa-east-1.amazonaws.com/arrematearte-farm/authors/avatar_images/000/006/521/original/Patek-Philippe-Arremate-Arte.png?1649071216" alt="Patek Philippe">
+                </div>
+                <div class="brand-item">
+                    <img src="https://cdn.worldvectorlogo.com/logos/audemars-piguet.svg" alt="Audemars Piguet">
+                </div>
+                <div class="brand-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/TAG_Heuer_Logo.svg/1200px-TAG_Heuer_Logo.svg.png" alt="Tag Heuer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h3>Sobre a ChronosLux</h3>
+                <p>Fundada em 1985, a ChronosLux se estabeleceu como a principal loja de relógios de luxo no Brasil, oferecendo peças exclusivas das melhores marcas internacionais.</p>
+                <p>Nossa missão é proporcionar aos nossos clientes não apenas um produto, mas uma experiência única de posse de um relógio que conta sua história através do tempo.</p>
+               
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Autenticidade Garantida</h4>
+                            <p>Todos os nossos relógios passam por rigorosos testes de autenticidade.</p>
+                        </div>
+                    </div>
+                   
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Garantia Internacional</h4>
+                            <p>Garantia de fábrica em todos os produtos, válida em todo o mundo.</p>
+                        </div>
+                    </div>
+                   
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Atendimento Personalizado</h4>
+                            <p>Nossa equipe especializada está pronta para te ajudar em todas as etapas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sobre a ChronosLux">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que nossos clientes dizem</h2>
+                <p>Depoimentos de clientes satisfeitos com nossos produtos e serviços</p>
+            </div>
+           
+            <div class="testimonials-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Roberto Silva</h4>
+                            <p>Executivo, São Paulo</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Comprei meu primeiro Rolex na ChronosLux e fiquei impressionado com o atendimento personalizado. O relógio chegou perfeitamente embalado e com toda a documentação. Recomendo!"</p>
+                </div>
+               
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Ana Carolina</h4>
+                            <p>Médica, Rio de Janeiro</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Presenteei meu marido com um Omega Speedmaster e ele amou! A equipe me ajudou a escolher o modelo perfeito e ainda ofereceram um serviço de gravação especial. Excelente experiência!"</p>
+                </div>
+               
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-img">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Cliente">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Carlos Eduardo</h4>
+                            <p>Empresário, Belo Horizonte</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Minha coleção de relógios cresceu graças à ChronosLux. Eles têm peças exclusivas que não encontro em outros lugares e um serviço pós-venda impecável."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Assine nossa Newsletter</h3>
+            <p>Receba novidades, lançamentos exclusivos e ofertas especiais diretamente no seu e-mail.</p>
+           
+            <form class="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Assinar</button>
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Sobre Nós</h4>
+                    <p>A ChronosLux é a principal loja de relógios de luxo no Brasil, oferecendo as melhores marcas internacionais com garantia e procedência.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+               
+                <div class="footer-col">
+                    <h4>Links Úteis</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Produtos</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-col">
+                    <h4>Serviços</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Manutenção</a></li>
+                        <li><a href="#">Autenticação</a></li>
+                        <li><a href="#">Personalização</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                        <li><a href="#">Trocas e Devoluções</a></li>
+                    </ul>
+                </div>
+               
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo/SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 4002-8922</p>
+                    <p><i class="fas fa-envelope"></i> contato@chronoslux.com.br</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 10h-19h | Sáb: 10h-14h</p>
+                </div>
+            </div>
+           
+            <div class="footer-bottom">
+                <p>&copy; 2023 ChronosLux - Todos os direitos reservados. CNPJ: 12.345.678/0001-99</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
